@@ -17,7 +17,7 @@ resource "aws_instance" "gatmauel" {
           "sudo apt install -y software-properties-common",
           "sudo apt-add-repository --yes --update ppa:ansible/ansible",
           "sudo apt install -y ansible",
-          "sudo ansible-pull -U https://github.com/wslee950920/gatmauel-ansible docker.yaml -i localhost"
+          "sudo ansible-pull -U https://github.com/wslee950920/gatmauel-ansible gatmauel.yaml -i localhost"
       ]
   }
 }
