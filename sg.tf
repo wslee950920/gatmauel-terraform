@@ -38,16 +38,27 @@ resource "aws_security_group" "allow_http" {
   }
 }
 
-resource "aws_security_group" "allow_https" {
-  name        = "allow_https"
-  description = "Allow HTTPS inbound traffic"
+resource "aws_security_group" "allow_mysql" {
+  name        = "allow_mysql"
+  description = "Allow mysql inbound traffic"
 
   ingress {
-    description = "HTTPS from VPC"
-    from_port   = 443
-    to_port     = 443
+    description = "mysql from VPC"
+    from_port   = 3306
+    to_port     = 3306
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    security_groups=[aws_default_security_group.default.id]
+  }
+}
+
+resource "aws_default_security_group" "default" {
+  vpc_id = aws_default_vpc.default.id
+
+  ingress {
+    protocol  = -1
+    self      = true
+    from_port = 0
+    to_port   = 0
   }
 
   egress {
