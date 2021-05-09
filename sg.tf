@@ -51,6 +51,19 @@ resource "aws_security_group" "allow_mysql" {
   }
 }
 
+resource "aws_security_group" "allow_redis" {
+  name = "allow_redis"
+  description = "Allow redis inbound traffic"
+
+  ingress {
+    description = "redis from vpc"
+    from_port = 6379
+    to_port = 6379
+    protocol = "tcp"
+    security_groups=[aws_default_security_group.default.id]
+  }
+}
+
 resource "aws_default_security_group" "default" {
   vpc_id = aws_default_vpc.default.id
 

@@ -1,5 +1,8 @@
 .terraform
-.terraform.lock.hcl
+.terraform.*
 terraform.*
 
 gatmauel.pem
+
+img
+layers

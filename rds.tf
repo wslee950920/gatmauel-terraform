@@ -13,8 +13,7 @@ module "db" {
     password = var.mysql_root_password
     port = "3306"
 
-    vpc_security_group_ids = [aws_security_group.allow_mysql.id, aws_default_security_group.default.id]
-
+    vpc_security_group_ids = [aws_security_group.allow_mysql.id]
     subnet_ids = [aws_default_subnet.default_az1.id, aws_default_subnet.default_az2.id, aws_default_subnet.default_az3.id]
 
     backup_window = "17:00-17:30"
@@ -23,7 +22,6 @@ module "db" {
 
     family = "mysql8.0"
     major_engine_version = "8.0"
-
     parameters = [
     {
         name = "character_set_client"
