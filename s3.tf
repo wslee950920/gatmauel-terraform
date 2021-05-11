@@ -33,9 +33,13 @@ resource "aws_s3_bucket_policy" "allow_cf" {
       }
     ]
   })
+
+  depends_on = [
+    aws_s3_bucket_public_access_block.private
+  ]
 }
 
-resource "aws_s3_bucket_public_access_block" "pirvate" {
+resource "aws_s3_bucket_public_access_block" "private" {
   bucket = aws_s3_bucket.gatmauel.id
 
   block_public_acls   = true

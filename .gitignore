@@ -5,4 +5,5 @@ terraform.*
 gatmauel.pem
 
 img
-layers
+lambda/*.zip
+lambda/*/*.zip

@@ -60,4 +60,6 @@ module "db" {
         value = "Asia/Seoul"
     }
   ]
+
+  skip_final_snapshot = true
 }
